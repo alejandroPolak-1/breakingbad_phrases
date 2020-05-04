@@ -29,7 +29,10 @@ const Button = styled.button`
 // End Styled Components
 
 const handleClick = () => {
-console.log('Consultando...')
+const api = fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes')
+const phrase = api.then(request => request.json())
+phrase.then(result => console.log(result))
+
 }
 
 function App() {
