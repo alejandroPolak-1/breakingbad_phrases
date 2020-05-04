@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from '@emotion/styled'
+import Phrase from './components/Phrase'
 
 //Styled Components
 
@@ -28,15 +29,25 @@ const Button = styled.button`
 
 // End Styled Components
 
-const handleClick = async () => {
-  const api = await fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes')
-  const phrase = await api.json()
-  console.log(phrase[0])
-}
+
 
 function App() {
+
+  //State of Phrases
+  const [phrase, setPhrase] = useState({})
+
+
+  const handleClick = async () => {
+    const api = await fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes')
+    const phrase = await api.json()
+    setPhrase(phrase[0])
+  }
+
   return (
     <Conteiner>
+      <Phrase
+      phrase ={phrase}
+      />
       <Button onClick={() => handleClick()}>Get Phrase</Button>
     </Conteiner>
   )
