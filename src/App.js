@@ -28,19 +28,16 @@ const Button = styled.button`
 
 // End Styled Components
 
-const handleClick = () => {
-const api = fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes')
-const phrase = api.then(request => request.json())
-phrase.then(result => console.log(result))
-
+const handleClick = async () => {
+  const api = await fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes')
+  const phrase = await api.json()
+  console.log(phrase[0])
 }
 
 function App() {
   return (
     <Conteiner>
-       <Button
-      onClick={() => handleClick()}
-      >Get Phrase</Button>
+      <Button onClick={() => handleClick()}>Get Phrase</Button>
     </Conteiner>
   )
 }
