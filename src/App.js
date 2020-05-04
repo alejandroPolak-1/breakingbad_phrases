@@ -35,7 +35,7 @@ console.log('Consultando...')
 function App() {
   return (
     <Conteiner>
-      <Button
+       <Button
       onClick={() => handleClick()}
       >Get Phrase</Button>
     </Conteiner>
